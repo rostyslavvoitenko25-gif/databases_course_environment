@@ -4,16 +4,36 @@
 -- Each query reads practice.courses. Do not put answers in this starter file before class.
 
 -- Q1: Return course_id and title for CS courses, ordered by course_id ascending.
-
+SELECT course_id, title
+FROM practice.courses
+WHERE department = 'CS'
+ORDER BY course_id;
 
 -- Q2: Return course_id for courses with more than zero seats available, ordered by course_id ascending.
-
+SELECT course_id
+FROM practice.courses
+WHERE seats_available > 0
+ORDER BY course_id;
 
 -- Q3: Return course_id and title for the first two available CS courses by credits descending, then course_id ascending.
+SELECT course_id, title
+FROM practice.courses
+WHERE department = 'CS' AND seats_available > 0
+ORDER BY credits DESC, course_id ASC
+LIMIT 2 OFFSET 1;
 
 
 -- Q4: Return course_id for courses with at least five credits, ordered by course_id ascending.
+SELECT course_id AS id
+FROM practice.courses
+WHERE credits >= 5
+ORDER BY course_id ASC;
 
 
 -- Q5: Return course_id for department HISTORY, ordered by course_id ascending.
+SELECT *
+FROM practice.courses
+WHERE department = 'HISTORY'
+ORDER BY course_id ASC;
+
 -- An empty result is a successful query, not a failed query.
